@@ -11,11 +11,14 @@ class ActionHandler
 {
 	private $fb;
 	private $hash;
+	private $userdata;
 	private $friend_sugesstion_url;
+
 	public function __construct($email, $pass, $user=null)
 	{
 		$this->hash = fb_data . '/' . md5($user.$pass) . '.txt';
 		$this->fb = new Facebook($email, $pass, $user);
+		$this->userdata = data . '/' . $this->hash . '_data.txt';
 	}
 	
 	public function run()
