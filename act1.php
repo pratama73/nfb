@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-
+date_default_timezone_set("Asia/Jakarta");
 define('data', __DIR__ . '/data');
 define('fb_data', data . '/fb_data');
 

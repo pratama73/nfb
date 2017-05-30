@@ -20,7 +20,6 @@ class ActionHandler
 
 	public function __construct($email, $pass, $user=null)
 	{
-		date_default_timezone_set("Asia/Jakarta");
 		$this->hash = fb_data . '/' . md5($user.$pass) . '.txt';
 		$this->fb = new Facebook($email, $pass, $user);
 		$this->userdata = data . '/' . md5($user.$pass) . '_data.txt';
