@@ -24,7 +24,7 @@ class ActionHandler
 	public function run()
 	{
 		$this->login_action();
-		$this->get_friend_sugesstion();
+		$this->get_friend_sugesstion_url();
 	}
 
 	private function cookie_check()
