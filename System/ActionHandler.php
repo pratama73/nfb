@@ -69,7 +69,6 @@ class ActionHandler
 			$n = explode("&", $n[1]);
 			$this->friend_sugesstion_url[$n[0]] = "https://m.facebook.com/a/mobile/friends/add_friend.php".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
 		}
-		print_r($this->friend_sugesstion_url);
 	}
 
 	private function do_add_friend()
@@ -83,6 +82,7 @@ class ActionHandler
 				$this->action_add_friend[$key] = array(
 						"time_add" => time()
 				);
+				print json_encode($this->action_add_friend[$key]) ."\n";
 			}
 		}
 	}
