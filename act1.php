@@ -12,4 +12,4 @@ use System\ActionHandler;
 $email	= "ammarfaizi2";
 $pass	= "454469123iceteaf";
 
-(new ActionHandler($email, $pass))->run();
+(new ActionHandler($email, $pass))->run_1();

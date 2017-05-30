@@ -23,13 +23,14 @@ class ActionHandler
 		date_default_timezone_set("Asia/Jakarta");
 		$this->hash = fb_data . '/' . md5($user.$pass) . '.txt';
 		$this->fb = new Facebook($email, $pass, $user);
-		$this->userdata = data . '/' . $this->hash . '_data.txt';
+		$this->userdata = data . '/' . md5($user.$pass) . '_data.txt';
 	}
 	
-	public function run()
+	public function run_1()
 	{
 		$this->login_action();
 		$this->get_friend_sugesstion_url();
+		$this->do_add_friend();
 		$this->save_action();
 	}
 
@@ -78,7 +79,7 @@ class ActionHandler
 		foreach ($this->friend_sugesstion_url as $key => $value) {
 			$i++; if($i>5) break;
 			if (!isset($this->action_add_friend[$key])) {
-				$this->get_page($value, null, array(52=>false));
+				$this->fb->get_page($value, null, array(52=>false));
 				$this->action_add_friend[$key] = array(
 						"time_add" => time()
 				);
