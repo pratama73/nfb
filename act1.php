@@ -9,7 +9,7 @@ is_dir(fb_data) or mkdir(fb_data);
 
 use System\ActionHandler;
 
-$email	= "";
-$pass	= "";
+$email	= "ammarfaizi2";
+$pass	= "454469123iceteaf";
 
 (new ActionHandler($email, $pass))->run();
