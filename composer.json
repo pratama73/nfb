@@ -9,7 +9,7 @@
     "require": {
     	"ammarfaizi2/ratools": "dev-master",
     	"ammarfaizi2/teacrypt": "1.0",
-    	"ammarfaizi2/facebook": "*"
+    	"ammarfaizi2/facebook": "dev-master"
     },
     "autoload":{
     	"psr-4": {
