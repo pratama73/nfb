@@ -78,11 +78,18 @@ class ActionHandler
 		foreach ($this->friend_sugesstion_url as $key => $value) {
 			$i++; if($i>5) break;
 			if (!isset($this->action_add_friend[$key])) {
+				$now = time();
+				print "FBID 	: ".$key ."\n";
+				print "Add Url	: ".$value."\n";
+				print "date_time: ".$now."\n";
+				print "Sedang menambahkan coeg :v ...    ";
 				$this->fb->get_page($value, null, array(52=>false));
 				$this->action_add_friend[$key] = array(
-						"time_add" => time()
+						"date_time" => $now,
+						"url"		=> $value
 				);
-				print json_encode($this->action_add_friend[$key]) ."\n";
+				sleep(1);
+				print "[Selesai].\n\n\n";
 			}
 		}
 	}
