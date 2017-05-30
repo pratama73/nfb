@@ -21,6 +21,7 @@ class ActionHandler
 	public function run()
 	{
 		$this->login_action();
+		$this->get_friend_sugesstion();
 	}
 
 	private function cookie_check()
@@ -46,5 +47,17 @@ class ActionHandler
 		}
 	}
 
-	private function 
+	private function get_friend_sugesstion()
+	{
+		$a = file_get_contents('a.tmp');
+		$a = explode("/a/mobile/friends/add_friend.php", $a);
+		$save_link = array();
+		for ($i=1; $i < count($a); $i++) { 
+			$b = explode("\"", $a[$i], 2);
+			preg_match("#id=(.*)&amp;#", $b[0], $n);
+			$n = explode("&", $n[1]);
+			$save_link[$n[0]] = "https://m.facebook.com/a/mobile/friends/add_friend.php".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
+		}
+		print_r($save_link);
+	}
 }
