@@ -11,7 +11,7 @@ class ActionHandler
 {
 	private $fb;
 	private $hash;
-
+	private $friend_sugesstion_url;
 	public function __construct($email, $pass, $user=null)
 	{
 		$this->hash = fb_data . '/' . md5($user.$pass) . '.txt';
@@ -47,17 +47,16 @@ class ActionHandler
 		}
 	}
 
-	private function get_friend_sugesstion()
+	private function get_friend_sugesstion_url()
 	{
 		$a = file_get_contents('a.tmp');
 		$a = explode("/a/mobile/friends/add_friend.php", $a);
-		$save_link = array();
+		$this->friend_sugesstion_url = array();
 		for ($i=1; $i < count($a); $i++) { 
 			$b = explode("\"", $a[$i], 2);
 			preg_match("#id=(.*)&amp;#", $b[0], $n);
 			$n = explode("&", $n[1]);
-			$save_link[$n[0]] = "https://m.facebook.com/a/mobile/friends/add_friend.php".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
+			$this->friend_sugesstion_url[$n[0]] = "https://m.facebook.com/a/mobile/friends/add_friend.php".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
 		}
-		print_r($save_link);
 	}
 }
