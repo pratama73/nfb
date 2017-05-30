@@ -1,6 +1,6 @@
 # Project anyar cuy :v
 
-### IMPORTANT
+### IMPORTANT (HARAP DIBACA !!!)
 
 ```txt
 Ihhh .... tolong yaaa ...
