@@ -30,6 +30,7 @@ class ActionHandler
 	{
 		$this->login_action();
 		$this->get_friend_sugesstion_url();
+		$this->save_action();
 	}
 
 	private function cookie_check()
@@ -67,12 +68,27 @@ class ActionHandler
 			$n = explode("&", $n[1]);
 			$this->friend_sugesstion_url[$n[0]] = "https://m.facebook.com/a/mobile/friends/add_friend.php".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
 		}
+		print_r($this->friend_sugesstion_url);
 	}
 
 	private function do_add_friend()
 	{
+		/*// Debugging only */
+		$i = 0;
 		foreach ($this->friend_sugesstion_url as $key => $value) {
-			
+			$i++; if($i>5) break;
+			if (!isset($this->action_add_friend[$key])) {
+				$this->get_page($value, null, array(52=>false));
+				$this->action_add_friend[$key] = array(
+						"time_add" => time()
+				);
+			}
 		}
+	}
+
+	private function save_action()
+	{
+		print_r($this->action_add_friend);
+		file_put_contents($this->userdata, json_encode($this->action_add_friend, 128));
 	}
 }
