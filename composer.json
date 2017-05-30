@@ -1,0 +1,13 @@
+{
+    "name": "root/nfb",
+    "authors": [
+        {
+            "name": "Ammar Faizi",
+            "email": "ammarfaizi2@gmail.com"
+        }
+    ],
+    "require": {
+    	"ammarfaizi2/ratools": "dev-master",
+    	"ammarfaizi2/teacrypt": "1.0"
+    }
+}
