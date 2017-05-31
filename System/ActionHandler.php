@@ -108,9 +108,13 @@ class ActionHandler
 	private function unfriend()
 	{
 		foreach ($this->action_add_friend as $key => $value) {
-			$src = $this->fb->get_page("https://m.facebook.com/".$key, null, array(52=>1));
-			if (strpos($src, "value=\"Permintaan Pertemanan Terkirim\"")) {
-				# code...
+			if (($value['date_time']+3600)>=time()) {
+				$src = $this->fb->get_page("https://m.facebook.com/".$key, null, array(52=>1));
+				if (strpos($src, "value=\"Permintaan Pertemanan Terkirim\"")!==false) {
+					$src = explode("/a/friendrequest/cancel/", $src, 2);
+					$src = explode("\"", $src[1], 2);
+					$this->fb->get_page("https://m.facebook.com/a/friendrequest/cancel/".html_entity_decode($src[0], ENT_QUOTES, 'UTF-8'));
+				}
 			}
 		}
 	}
