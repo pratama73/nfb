@@ -92,9 +92,9 @@ class ActionHandler
     private function do_add_friend()
     {
         /*// Debugging only */
-        $i = 0;
+        #$i = 0;
         foreach ($this->friend_sugesstion_url as $key => $value) {
-            $i++; if($i>2) break;
+            #$i++; if($i>2) break;
             if ($this->get_start_time()<=time()) {
                 $this->unfriend();
                 $this->save_start_time();
@@ -121,6 +121,7 @@ class ActionHandler
                     );
                 $this->save_log();
                 print "{$msg}\t[Selesai].\n\n\n";
+                sleep(1);
             }
         }
     }

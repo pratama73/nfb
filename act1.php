@@ -11,4 +11,8 @@ use System\ActionHandler;
 
 $email    = "Dipta.argae";
 $pass    = "abegoboga123";
-(new ActionHandler($email, $pass))->run_1();
+
+for($i=0;$i<=4;$i++){
+	(new ActionHandler($email, $pass))->run_1();
+	sleep(10);
+}
