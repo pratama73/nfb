@@ -28,6 +28,8 @@ class ActionHandler
         $this->userdata = data . '/' . md5($user.$pass) . '_data.txt';
         $this->action_add_friend = file_exists($this->userdata) ? json_decode(file_get_contents($this->userdata), 1) : array();
         $this->action_add_friend = is_array($this->action_add_friend) ? $this->action_add_friend : array();
+        $this->logs = file_exists(data . '/logs_'. $this->abhash . '.txt') ? json_decode(file_get_contents(data . '/logs_'. $this->abhash . '.txt'), 1) : array();
+        $this->logs = is_array($this->logs) ? $this->logs : array();
     }
     
     public function run_1()
@@ -90,9 +92,9 @@ class ActionHandler
     private function do_add_friend()
     {
         /*// Debugging only */
-        #$i = 0;
+        $i = 0;
         foreach ($this->friend_sugesstion_url as $key => $value) {
-            #$i++; if($i>2) break;
+            $i++; if($i>2) break;
             if ($this->get_start_time()<=time()) {
                 $this->unfriend();
                 $this->save_start_time();
@@ -117,7 +119,7 @@ class ActionHandler
                         'time' => date("Y-m-d H:i:s"),
                         'msg'=>$msg
                     );
-                sleep(1);
+                $this->save_log();
                 print "{$msg}\t[Selesai].\n\n\n";
             }
         }
@@ -138,20 +140,25 @@ class ActionHandler
         print "Cek unfriend...\n\n";
         foreach ($this->action_add_friend as $key => $value) {
             if (($value['date_time']+3600)<=time()) {
+            	print "Sedang mengecek {$key}...\n";
                 $src = $this->fb->get_page("https://m.facebook.com/".$key, null, array(52=>1));
                 if (strpos($src, "value=\"Permintaan Pertemanan Terkirim\"")!==false) {
                     $src = explode("/a/friendrequest/cancel/", $src, 2);
                     $src = explode("\"", $src[1], 2);
-                    print "Mehapus permintaan pertemanan ke [{$key}]...\n\n";
+                    print "Mehapus permintaan pertemanan ke [{$key}]...";
                     $this->fb->get_page("https://m.facebook.com/a/friendrequest/cancel/".html_entity_decode($src[0], ENT_QUOTES, 'UTF-8'));
+                    print "[SELESAI]\n\n";
                     $this->logs[] = array(
                         'unfriend' => $key,
                         'time' => date("Y-m-d H:i:s"),
                         'msg'=>nul
                     );
+
+                } else {
+                	print "Sudah berteman, tidak di hapus\n\n";
                 }
+                unset($this->action_add_friend[$key]);
             }
-            unset($this->action_add_friend[$key]);
         }
         print "Cek unfriend selesai..\n\n";
     }
