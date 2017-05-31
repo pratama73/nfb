@@ -1,0 +1,42 @@
+[
+    {
+        "add_friend": "100015264397452",
+        "time": "2017-05-31 19:36:08",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100013132337022",
+        "time": "2017-05-31 19:36:10",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100014582500445",
+        "time": "2017-05-31 19:37:27",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100017575715873",
+        "time": "2017-05-31 19:37:29",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100005457976400",
+        "time": "2017-05-31 19:37:44",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100016907388564",
+        "time": "2017-05-31 19:37:46",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100017269066836",
+        "time": "2017-05-31 19:37:54",
+        "msg": "Permintaan terkirim"
+    },
+    {
+        "add_friend": "100017592314289",
+        "time": "2017-05-31 19:37:56",
+        "msg": "Permintaan terkirim"
+    }
+]

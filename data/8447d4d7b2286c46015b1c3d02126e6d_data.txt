@@ -1,0 +1,42 @@
+{
+    "100015264397452": {
+        "date_time": 1496234166,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100015264397452&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=0.7059191&so=pysu&signature=935160672&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQD5BFeoX2G-Ystx",
+        "msg": "Permintaan terkirim"
+    },
+    "100013132337022": {
+        "date_time": 1496234168,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100013132337022&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=0.4482933&so=pysu&signature=935160672&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQDwOlq04q9UqQDl",
+        "msg": "Permintaan terkirim"
+    },
+    "100014582500445": {
+        "date_time": 1496234245,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100014582500445&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=1.3469569&so=pysu&signature=766378575&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQCEvs9mNXncrpa6",
+        "msg": "Permintaan terkirim"
+    },
+    "100017575715873": {
+        "date_time": 1496234247,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100017575715873&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=0.5322611&so=pysu&signature=766378575&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQAl5Jl4f4Y6UNPv",
+        "msg": "Permintaan terkirim"
+    },
+    "100005457976400": {
+        "date_time": 1496234261,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100005457976400&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=0.599221&so=pysu&signature=1276553985&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQC59KPVu7TrPI-n",
+        "msg": "Permintaan terkirim"
+    },
+    "100016907388564": {
+        "date_time": 1496234264,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100016907388564&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=0.793021&so=pysu&signature=1276553985&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQDdkAh7_iboVczc",
+        "msg": "Permintaan terkirim"
+    },
+    "100017269066836": {
+        "date_time": 1496234272,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100017269066836&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=1.052661&so=pysu&signature=1747606236&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQAcvybRed8fSINv",
+        "msg": "Permintaan terkirim"
+    },
+    "100017592314289": {
+        "date_time": 1496234274,
+        "url": "https:\/\/m.facebook.com\/a\/mobile\/friends\/add_friend.php?id=100017592314289&hf=friend_browser&pl=%2Ffind-friends%2Findex.php&sc=0.89864&so=pysu&signature=1747606236&suri=https%3A%2F%2Fm.facebook.com%2Ffriends%2Fcenter%2Fsuggestions%3Fmfl_act%3D1%23last_acted&ufli=1&mfle=1&floc=pymk&frefs=friends_center&gfid=AQA_APrTuufiTjMj",
+        "msg": "Permintaan terkirim"
+    }
+}
