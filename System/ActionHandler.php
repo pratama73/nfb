@@ -15,6 +15,7 @@ class ActionHandler
 	private $fb;
 	private $hash;
 	private $userdata;
+	private $unfriend_act;
 	private $action_add_friend = array();
 	private $friend_sugesstion_url = array();
 
@@ -23,6 +24,8 @@ class ActionHandler
 		$this->hash = fb_data . '/' . md5($user.$pass) . '.txt';
 		$this->fb = new Facebook($email, $pass, $user);
 		$this->userdata = data . '/' . md5($user.$pass) . '_data.txt';
+		$this->action_add_friend = file_exists($this->userdata) ? json_decode(file_get_contents($this->userdata), 1) : array();
+		$this->action_add_friend = is_array($this->action_add_friend) ? $this->action_add_friend : array();
 	}
 	
 	public function run_1()
@@ -61,7 +64,6 @@ class ActionHandler
 		# $a = file_get_contents('a.tmp');
 		$a = $this->fb->get_page("https://m.facebook.com/friends/center/suggestions");
 		$a = explode("/a/mobile/friends/add_friend.php", $a);
-		$this->friend_sugesstion_url = array();
 		for ($i=1; $i < count($a); $i++) { 
 			$b = explode("\"", $a[$i], 2);
 			preg_match("#id=(.*)&amp;#", $b[0], $n);
@@ -82,13 +84,17 @@ class ActionHandler
 				print "Add Url	: ".$value."\n";
 				print "date_time: ".$now."\n";
 				print "Sedang menambahkan coeg :v ...    ";
-				$this->fb->get_page($value, null, array(52=>false));
+				$a = explode("\"last_acted\"", $this->fb->get_page($value, null, array(52=>false)), 2);
+				$a = explode("</div>", $a[1], 2);
+				$a = explode(">", $a[0]);
+				$msg = end($a);
 				$this->action_add_friend[$key] = array(
 						"date_time" => $now,
-						"url"		=> $value
+						"url"		=> $value,
+						"msg"		=> $msg
 				);
 				sleep(1);
-				print "[Selesai].\n\n\n";
+				print "{$msg}\t[Selesai].\n\n\n";
 			}
 		}
 	}
@@ -97,5 +103,15 @@ class ActionHandler
 	{
 		print_r($this->action_add_friend);
 		file_put_contents($this->userdata, json_encode($this->action_add_friend, 128));
+	}
+
+	private function unfriend()
+	{
+		foreach ($this->action_add_friend as $key => $value) {
+			$src = $this->fb->get_page("https://m.facebook.com/".$key, null, array(52=>1));
+			if (strpos($src, "value=\"Permintaan Pertemanan Terkirim\"")) {
+				# code...
+			}
+		}
 	}
 }
