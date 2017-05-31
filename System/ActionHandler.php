@@ -85,9 +85,9 @@ class ActionHandler
 				print "date_time: ".$now."\n";
 				print "Sedang menambahkan coeg :v ...    ";
 				$a = explode("\"last_acted\"", $this->fb->get_page($value, null, array(52=>false)), 2);
-				$a = explode("</div>", $a[1], 2);
-				$a = explode(">", $a[0]);
-				$msg = end($a);
+				$a = isset($a[1]) ? explode("</div>", $a[1], 2) : null;
+				$a = isset($a[0]) ? explode(">", $a[0]) : null;
+				$msg = isset($a) ? end($a) : "Gagal";
 				$this->action_add_friend[$key] = array(
 						"date_time" => $now,
 						"url"		=> $value,
