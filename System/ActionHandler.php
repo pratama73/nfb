@@ -152,7 +152,7 @@ class ActionHandler
                     $this->logs[] = array(
                         'unfriend' => $key,
                         'time' => date("Y-m-d H:i:s"),
-                        'msg'=>nul
+                        'msg'=>null
                     );
 
                 } else {
