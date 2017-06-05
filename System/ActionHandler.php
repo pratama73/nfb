@@ -226,7 +226,7 @@ class ActionHandler
 				$this->saveLog(json_encode($save, 128).",\n\n");
 				sleep(10);
 			}
-			if ($i_report==50) {
+			if ($i_report==15) {
 				$i_report = 0;
 				$this->reportAction();
 			}
@@ -320,8 +320,8 @@ class ActionHandler
 				$a['msg'] = "Sudah berteman.";
 				$this->saveAcc(json_encode(array(
 					"URL"=>$url,
-					"Time"=>date("Y-m-d H:i:s"), 128).",\n\n"
-				);
+					"Time"=>date("Y-m-d H:i:s"))
+				, 128).",\n\n");
 			}
 			$a['time'] = date("Y-m-d H:i:s");
 			$save = array(
