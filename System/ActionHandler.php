@@ -90,12 +90,12 @@ class ActionHandler
 		$i = 0;
 		foreach ($this->id_list as $val) {
 			$i++;
-			$a = $this->checkProfile($val) and print $val." ".$a or print "$val false";
+			$a = $this->checkProfile(trim($val)) and print $val." ".$a or print "$val false";
 			if (filter_var($a, FILTER_VALIDATE_URL)) {
-				$this->urip[] = $val;
+				!in_array($val, $this->urip) and $this->urip[] = $val;
 				file_put_contents("link_profile.txt", $a."\n", FILE_APPEND | LOCK_EX);
 			} else {
-				$this->mati[] = $val;
+				!in_array($val, $this->mati) and $this->mati[] = $val;
 				file_put_contents("mati.txt", $a."\n", FILE_APPEND | LOCK_EX);
 			}
 			print "\n";
