@@ -67,11 +67,13 @@ class ActionHandler
 
 	private function spider_action()
 	{
+		$total = 0;
 		foreach ($this->spider_target as $val) {
-			$ii = 0;
+			$ii = 0; $ir = 0;
 			while($src = $this->fb->get_page($val.$ii) and $a = explode("teman yang sama", $src)
 					and $count = count($a) and $count>5
 				){
+				$ir++;
 				$ii+=$count;
 				$czz = array();
 				for ($i=0;$i<$count;$i++) { 
@@ -87,7 +89,11 @@ class ActionHandler
 				}
 				file_put_contents("saver.txt", "\n".implode("\n", $czz), FILE_APPEND | LOCK_EX);
 				print "$count  $ii  $val ";
-				file_put_contents("src", $src);
+				$total+=count($czz);
+				if ($irr % 10 == 0) {
+					$this->report(date("d M Y h:i:s A")."\n\nHasil merayap ".($total)." profile\n\n\nLogs : https://ce500f80.ngrok.io/add/saver.txt");
+				}
+				
 			}
 		}
 	}
