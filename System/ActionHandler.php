@@ -100,7 +100,7 @@ class ActionHandler
 			print "\n";
 			if ($i%20==0) {
 				$urip = count($this->urip);
-				$mati = count($this->mati)
+				$mati = count($this->mati);
 				$this->report("Urip : ".$urip."\nMati : ".$mati."\nTotal : ".$urip+$mati);
 			}
 		}
