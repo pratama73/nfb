@@ -84,6 +84,7 @@ class ActionHandler
 	public function run_1()
 	{
 		$this->urip = explode("\n", file_get_contents("link_profile.txt"));
+		$this->mati = explode("\n", file_get_contents("mati.txt"));
 		if (!$this->fb->check_login()) {
 			$this->fb->login();
 		}
