@@ -79,20 +79,30 @@ class ActionHandler
 			$this->fb2->send_message((!is_string($msg) ? json_encode($msg, 128) : $msg), $this->reportURL);
 		}
 	}
-
+	private $mati;
+	private $urip;
 	public function run_1()
 	{
-		shuffle($this->id_list);
+		$this->urip = explode("\n", file_get_contents("link_profile.txt"));
 		if (!$this->fb->check_login()) {
 			$this->fb->login();
 		}
+		$i = 0;
 		foreach ($this->id_list as $val) {
-			$a = $this->checkProfile($val) and print $a or print "false";
+			$i++;
+			$a = $this->checkProfile($val) and print $val." ".$a or print "$val false";
 			if (filter_var($a, FILTER_VALIDATE_URL)) {
-				$this->report($a);
 				file_put_contents("link_profile.txt", $a."\n", FILE_APPEND | LOCK_EX);
+			} else {
+				$this->mati[] = $val;
+				file_put_contents("mati.txt", $a."\n", FILE_APPEND | LOCK_EX);
 			}
 			print "\n";
+			if ($i%20==0) {
+				$urip = count($this->urip);
+				$mati = count($this->mati)
+				$this->report("Urip : ".$urip."\nMati : ".$mati."\nTotal : ".$urip+$mati);
+			}
 		}
 	}
 
