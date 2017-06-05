@@ -241,7 +241,7 @@ class ActionHandler
                 $this->saveLog(json_encode($save, 128).",\n\n");
                 sleep(10);
             }
-            if ($i_report==15) {
+            if ($i_report>=200) {
                 $i_report = 0;
                 $this->reportAction();
             }
