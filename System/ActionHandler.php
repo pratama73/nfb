@@ -96,14 +96,14 @@ class ActionHandler
 				file_put_contents("link_profile.txt", $a."\n", FILE_APPEND | LOCK_EX);
 			} else {
 				!in_array($val, $this->mati) and $this->mati[] = $val;
-				file_put_contents("mati.txt", $a."\n", FILE_APPEND | LOCK_EX);
+				file_put_contents("mati.txt", $val."\n", FILE_APPEND | LOCK_EX);
 			}
 			print "\n";
-			if ($i>=50) {
+			if ($i>=300) {
 				$i = 0;
 				$urip = count($this->urip);
 				$mati = count($this->mati);
-				$this->report(date("d m Y h:i:s A")."\nUrip : ".($urip)."\nMati : ".($mati)."\nTotal : ".($urip+$mati));
+				$this->report(date("d M Y h:i:s A")."\nUrip : ".($urip)."\nMati : ".($mati)."\nTotal : ".($urip+$mati));
 			}
 		}
 	}
