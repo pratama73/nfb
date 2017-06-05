@@ -5,7 +5,7 @@
 #HttpOnly_.facebook.com	TRUE	/	TRUE	1559716207	datr	bfo0WegHuRH7dYnoeE48ZhYt
 #HttpOnly_.facebook.com	TRUE	/	TRUE	1512196207	dats	1
 #HttpOnly_.facebook.com	TRUE	/	TRUE	1559716207	sb	b_o0Weq1rPt7F1RvNXZGFXmm
-.facebook.com	TRUE	/	TRUE	1504420207	c_user	100009288837884
-#HttpOnly_.facebook.com	TRUE	/	TRUE	1504420207	xs	40%3AUkpN5Dld1doopg%3A2%3A1496644207%3A5602
-#HttpOnly_.facebook.com	TRUE	/	TRUE	1504420207	fr	0i9N2jfJLPRmLA8D8.AWURRbDxavKG-2GxW3O5UZiZbZc.BZNPpv.Mn.AAA.0.0.BZNPpv.AWVF3xJX
+.facebook.com	TRUE	/	TRUE	1504439317	c_user	100009288837884
+#HttpOnly_.facebook.com	TRUE	/	TRUE	1504439317	xs	40%3AUkpN5Dld1doopg%3A2%3A1496644207%3A5602
+#HttpOnly_.facebook.com	TRUE	/	TRUE	1504439317	fr	0i9N2jfJLPRmLA8D8.AWUIgEtQ-0b-D6RHLzHiquBkMwo.BZNPpv.Mn.AAA.0.0.BZNUUV.AWXCVXe0
 #HttpOnly_.facebook.com	TRUE	/	TRUE	1559716207	lu	gA

