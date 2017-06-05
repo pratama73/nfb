@@ -24,6 +24,12 @@ class ActionHandler
 
 	/**
 	 *
+	 * @var Facebook\Facebook
+	 */
+	private $fb2;
+
+	/**
+	 *
 	 * @var	array
 	 */
 	private $id_list = array();
@@ -36,7 +42,7 @@ class ActionHandler
 	 * @param	string	$pass
 	 * @param	string	$user
 	 */
-	public function __construct($email, $pass, $user=null)
+	public function __construct($email, $pass, $user = null)
 	{
 		$this->fb      	= new Facebook($email, $pass, $user);
 		$this->data	 	= data.self::MDATA;
@@ -52,15 +58,38 @@ class ActionHandler
 		$this->id_list = $id_list;
 	}
 
+	public function setFB2($email, $pass, $user = null)
+	{
+		$this->fb2 = new Facebook($email, $pass, $user);
+		if (!$this->fb2->check_login()) {
+			$this->fb2->login();
+		}
+	}
+
+	public $reportURL = null;
+	
+	public function setReportURL($reportURL)
+	{
+		$this->reportURL = str_replace("https://m.facebook.com", "", $reportURL);
+	}
+
+	private function report($msg)
+	{
+		if ($this->reportURL!==null) {
+			$this->fb2->send_message((!is_string($msg) ? json_encode($msg, 128) : $msg), $this->reportURL);
+		}
+	}
 
 	public function run_1()
 	{
-		$this->id_list	= shuffle($this->id_list);
+		shuffle($this->id_list);
 		if (!$this->fb->check_login()) {
 			$this->fb->login();
 		}
+		var_dump($this->id_list);
 		foreach ($this->id_list as $val) {
 			$a = $this->checkProfile($val) and print $a or print "false";
+			$this->report($a);
 			print "\n";
 		}
 	}
