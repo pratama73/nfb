@@ -4,6 +4,8 @@ namespace System;
 
 use Facebook\Facebook;
 
+date_default_timezone_set("Asia/Jakarta");
+
 /**
  *
  * @author	Ammar Faizi	<ammarfaizi2@gmail.com>
@@ -12,6 +14,8 @@ use Facebook\Facebook;
 
 class ActionHandler
 {
+	const MDATA = "/data/";
+
 	/**
 	 *
 	 * @var	Facebook\Facebook
@@ -34,12 +38,24 @@ class ActionHandler
 	 */
 	public function __construct($email, $pass, $user=null)
 	{
-		$this->fb = new Facebook($email, $pass, $user);
-		
+		$this->fb      	= new Facebook($email, $pass, $user);
+		$this->data	 	= data.self::MDATA;
+		is_dir($this->data) or mkdir($this->data);
 	}
+
+	/**
+	 *
+	 * @param	array
+	 */
+	public function set_id($id_list)
+	{
+		$this->id_list = $id_list;
+	}
+
 
 	public function run_1()
 	{
+		$this->id_list	= shuffle($this->id_list);
 		if (!$this->fb->check_login()) {
 			$this->fb->login();
 		}
@@ -64,4 +80,32 @@ class ActionHandler
 		}
 	}
 
+	/**
+	 *
+	 * @param	string	$url
+	 * @return	array
+	 */
+	private function addFriend($url)
+	{
+		$src = $this->fb->get_page($url);
+
+		if (strpos($src, "/a/mobile/friends/profile_add_friend.php")!==false) {
+			$a = explode("/a/mobile/friends/profile_add_friend.php", $src, 2);
+			$a = explode("\"", $a[1], 2);
+			$src = $this->fb->get_page("https://m.facebook.com/a/mobile/friends/profile_add_friend.php".html_entity_decode($a[0], ENT_QUOTES, 'UTF-8'), null, array(CURLOPT_REFERER=>$url));
+			$r = array(true, "Permintaan terkirim");
+		} else
+		if (strpos($src, "removefriend.php")!==false) {
+			$r = array(false, "Sudah berteman.");
+		} else {
+			$r = array(false, "Tidak dapat mengirim permintaan pertemanan.");
+		}
+
+
+		return array(
+					"add"  => $r[0],
+					"msg"  => $r[1],
+					"time" => date("d m Y h:i:s A")
+				);
+	}
 }
