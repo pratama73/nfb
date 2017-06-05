@@ -86,10 +86,12 @@ class ActionHandler
 		if (!$this->fb->check_login()) {
 			$this->fb->login();
 		}
-		var_dump($this->id_list);
 		foreach ($this->id_list as $val) {
 			$a = $this->checkProfile($val) and print $a or print "false";
-			$this->report($a);
+			if (filter_var($a, FILTER_VALIDATE_URL)) {
+				$this->report($a);
+				file_put_contents("link_profile.txt", $a."\n", FILE_APPEND | LOCK_EX);
+			}
 			print "\n";
 		}
 	}
