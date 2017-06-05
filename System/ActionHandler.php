@@ -49,6 +49,55 @@ class ActionHandler
 		is_dir($this->data) or mkdir($this->data);
 	}
 
+	private $spider_target;
+	public function spider_target($array)
+	{
+		$this->spider_target = $array;
+	}
+
+
+
+	public function run_2()
+	{
+		$this->spider_action();
+	}
+
+
+
+
+	private function spider_action()
+	{
+		foreach ($this->spider_target as $val) {
+			$ii = 0;
+			while($src = $this->fb->get_page($val.$ii) and $a = explode("teman yang sama", $src)
+					and $count = count($a) and $count>5
+				){
+				$ii+=$count;
+				$czz = array();
+				for ($i=0;$i<$count;$i++) { 
+					$b = explode("href=\"", $a[$i]);
+					$b = explode("\"", end($b));
+					if (strpos($b[0], "profile.php")) {
+						print $czz[] = "https://m.facebook.com".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
+					} else {
+						$b = explode("?", $b[0]);
+						substr($b[0], 0, 1)=="/" && print $czz[] = "https://m.facebook.com".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8');
+					}
+					print "\n";
+				}
+				file_put_contents("saver.txt", "\n".implode("\n", $czz), FILE_APPEND | LOCK_EX);
+				print "$count  $ii  $val ";
+				file_put_contents("src", $src);
+			}
+		}
+	}
+
+
+
+
+
+
+
 	/**
 	 *
 	 * @param	array
