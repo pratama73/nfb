@@ -191,7 +191,7 @@ class ActionHandler
 			 	 * Nek wis sak jam
 			 	 */
 				$this->unfriendAction();
-				
+
 				/**
 				 * Anyak i meneh
 				 */
@@ -209,12 +209,14 @@ class ActionHandler
 						);
 					$this->saveAdd();
 				}
-				$this->saveLog(json_encode(array(
+				$save = array(
 						"URL"   => $val,
 						"Add"   => $a['add'],
 						"Pesan" => $a['msg'],
 						"Waktu" => $a['time']
-					), 128).",\n\n");
+					);
+				print_r($save);
+				$this->saveLog(json_encode($save, 128).",\n\n");
 			}
 		}
 	}
@@ -277,7 +279,7 @@ class ActionHandler
 	private function unfriendAction()
 	{
 		foreach ($this->action['add'] as $url => $val) {
-			if(!$this->cekPertemanan($url)){
+			if((strtotime($val['Time'])+3600)<=time() && !$this->cekPertemanan($url)){
 				$this->batalkan_permintaan($url);
 				$a[0] = true;
 				$a['msg'] = "Batalkan pertemanan.";
@@ -286,12 +288,13 @@ class ActionHandler
 				$a['msg'] = "Sudah berteman.";
 			}
 			$a['time'] = date("Y-m-d H:i:s");
-
-			$this->saveLog(json_encode(array(
+			$save = array(
 					"Unfriend"  => $a[0],
 					"Pesan" 	=> $a['msg'],
 					"Waktu" 	=> $a['time']
-				), 128).",\n\n");
+				);
+			print_r($save);
+			$this->saveLog(json_encode($save, 128).",\n\n");
 		}
 	}
 
