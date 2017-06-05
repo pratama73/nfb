@@ -1,0 +1,43 @@
+[
+{
+    "URL": "https:\/\/m.facebook.com\/jumadi.supiandi",
+    "Add": null,
+    "Pesan": "Gagal.",
+    "Waktu": "2017-06-05 18:21:00"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/jumadi.supiandi",
+    "Add": false,
+    "Pesan": "Gagal.",
+    "Waktu": "2017-06-05 18:22:45"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/ardian.deh.1",
+    "Add": false,
+    "Pesan": "Tidak dapat mengirim permintaan pertemanan.",
+    "Waktu": "2017-06-05 18:22:45"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/putra.banjar.54540218",
+    "Add": true,
+    "Pesan": "Permintaan Pertemanan Terkirim",
+    "Waktu": "2017-06-05 18:22:49"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/profile.php?id=100004113521595",
+    "Add": true,
+    "Pesan": "Permintaan Pertemanan Terkirim",
+    "Waktu": "2017-06-05 18:22:53"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/profile.php?id=100014984112000",
+    "Add": true,
+    "Pesan": "Permintaan Pertemanan Terkirim",
+    "Waktu": "2017-06-05 18:22:56"
+}
+]
