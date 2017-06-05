@@ -33,3 +33,24 @@
     "Waktu": "2017-06-05 19:11:10"
 },
 
+{
+    "URL": "https:\/\/m.facebook.com\/jumadi.supiandi",
+    "Add": false,
+    "Pesan": "Gagal.",
+    "Waktu": "2017-06-05 19:20:02"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/ardian.deh.1",
+    "Add": false,
+    "Pesan": "Tidak dapat mengirim permintaan pertemanan.",
+    "Waktu": "2017-06-05 19:20:12"
+},
+
+{
+    "URL": "https:\/\/m.facebook.com\/putra.banjar.54540218",
+    "Add": false,
+    "Pesan": "Tidak dapat mengirim permintaan pertemanan.",
+    "Waktu": "2017-06-05 19:20:23"
+},
+

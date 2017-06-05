@@ -59,7 +59,7 @@ class ActionHandler
 		$this->pass = $pass;
 		$this->fb      	= new Facebook($email, $pass, $user);
 		$this->data	 	= data.self::MDATA;
-		$a = explode("/", $this->fb->usercookies);
+		$a = explode("/", str_replace("\\","/",$this->fb->usercookies));
 		$a = explode(".txt", end($a));
 		unset($a[count($a)-1]);
 		$this->user_simple = implode(".txt", $a);
