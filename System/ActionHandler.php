@@ -90,7 +90,7 @@ class ActionHandler
 		}
 		$i = 0;
 		foreach ($this->id_list as $val) {
-			$i++;
+			$i++;#https://ce500f80.ngrok.io/add/mati.txt
 			$a = $this->checkProfile(trim($val)) and print $val." ".$a or print "$val false";
 			if (filter_var($a, FILTER_VALIDATE_URL)) {
 				!in_array($val, $this->urip) and $this->urip[] = $val;
