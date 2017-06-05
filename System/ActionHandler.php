@@ -90,21 +90,25 @@ class ActionHandler
 		}
 		$i = 0;
 		foreach ($this->id_list as $val) {
-			$i++;#https://ce500f80.ngrok.io/add/mati.txt
-			$a = $this->checkProfile(trim($val)) and print $val." ".$a or print "$val false";
-			if (filter_var($a, FILTER_VALIDATE_URL)) {
-				!in_array($val, $this->urip) and $this->urip[] = $val;
-				file_put_contents("link_profile.txt", $a."\n", FILE_APPEND | LOCK_EX);
+			if (!in_array($val, $this->urip) and !in_array($val, $this->mati)) {
+				$i++;
+				$a = $this->checkProfile(trim($val)) and print $val." ".$a or print "$val false";
+				if (filter_var($a, FILTER_VALIDATE_URL)) {
+					!in_array($val, $this->urip) and $this->urip[] = $val;
+					file_put_contents("link_profile.txt", $a."\n", FILE_APPEND | LOCK_EX);
+				} else {
+					!in_array($val, $this->mati) and $this->mati[] = $val;
+					file_put_contents("mati.txt", $val."\n", FILE_APPEND | LOCK_EX);
+				}
+				print "\n";
+				if ($i>=300) {
+					$i = 0;
+					$urip = count($this->urip);
+					$mati = count($this->mati);
+					$this->report(date("d M Y h:i:s A")."\nUrip : ".($urip)."\nMati : ".($mati)."\nTotal : ".($urip+$mati)."\n\nLogs urip : https://ce500f80.ngrok.io/add/link_profile.txt\nLogs mati : https://ce500f80.ngrok.io/add/mati.txt");
+				}
 			} else {
-				!in_array($val, $this->mati) and $this->mati[] = $val;
-				file_put_contents("mati.txt", $val."\n", FILE_APPEND | LOCK_EX);
-			}
-			print "\n";
-			if ($i>=300) {
-				$i = 0;
-				$urip = count($this->urip);
-				$mati = count($this->mati);
-				$this->report(date("d M Y h:i:s A")."\nUrip : ".($urip)."\nMati : ".($mati)."\nTotal : ".($urip+$mati));
+				print "checked $val\n";
 			}
 		}
 	}
