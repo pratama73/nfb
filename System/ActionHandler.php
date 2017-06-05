@@ -90,7 +90,7 @@ class ActionHandler
 				file_put_contents("saver.txt", "\n".implode("\n", $czz), FILE_APPEND | LOCK_EX);
 				print "$count  $ii  $val ";
 				$total+=count($czz);
-				if ($irr % 10 == 0) {
+				if ($ir % 10 == 0) {
 					$this->report(date("d M Y h:i:s A")."\n\nHasil merayap ".($total)." profile\n\n\nLogs : https://ce500f80.ngrok.io/add/saver.txt");
 				}
 				
