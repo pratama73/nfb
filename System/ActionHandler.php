@@ -192,10 +192,18 @@ class ActionHandler
             $this->fb->login();
         }
         $this->start_time();
-        $i_report = 0;
+        $i_report = 0; $i_rest = 0;
         foreach ($this->linkall as $val) {
         	print "Akun ini : ".$this->email."\n\n";
-            $i_report++;
+            $i_report++; $i_rest++;
+            if ($i_rest>=100) {
+            	$qq = 1000;
+            	print "\n\nIstirahat ".($qq/60)." menit...\n\n";
+            	while ($qq>0) {
+            		print "Sedang dalam masa istirahat, akan lanjut dalam ".($qq--)." detik lagi...\n";
+            		sleep(1);
+            	}
+            }
             if ($this->startTime<=time()) {
                 /**
                   * Nek wis sak jam
